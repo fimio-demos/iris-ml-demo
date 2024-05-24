@@ -1,2 +1,2 @@
 # simple-ml-example
- iris prediction
+Simple machine learning repo to be used to test fimio demo product.
