@@ -1,14 +1,22 @@
 FROM nvidia/cuda:12.4.1-runtime-ubuntu22.04
 
-# Install any OS-level tools your app needs
+# Install Python 3.10, pip, and any OS-level tools
 RUN apt-get update && apt-get install -y \
+      python3.10 \
+      python3.10-distutils \
+      python3-pip \
       curl \
       git \
       gpg \
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/* \
+    && update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.10 1
 
+# Install Python dependencies with pip
+COPY requirements.txt .
+RUN pip3 install --no-cache-dir -r requirements.txt
+
+# Copy the rest of your code
 COPY . .
-RUN pip install -r requirements.txt
 
-# Launch your test
-CMD ["python", "cuda_test.py"]
+# Run your CUDA test
+CMD ["python3", "cuda_test.py"]
