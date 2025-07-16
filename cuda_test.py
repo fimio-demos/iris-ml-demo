@@ -38,6 +38,7 @@ def main():
 
     # keep process alive so you can inspect via nvidia-smi
     print("GPU work done—sleeping for 5 minutes to let you inspect nvidia-smi…")
+    time.sleep(300)
 
 if __name__ == "__main__":
     main()
