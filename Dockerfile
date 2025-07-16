@@ -7,14 +7,8 @@ RUN apt-get update && apt-get install -y \
       gpg \
     && rm -rf /var/lib/apt/lists/*
 
-WORKDIR /app
-
-# Install Python deps
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
-
-# Copy your code in
 COPY . .
+RUN pip install -r requirements.txt
 
 # Launch your test
 CMD ["python", "cuda_test.py"]
