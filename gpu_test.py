@@ -1,7 +1,8 @@
 from numba import jit, cuda 
 import numpy as np 
 # to measure exec time 
-from timeit import default_timer as timer    
+from timeit import default_timer as timer
+import time
   
 # normal function to run on cpu 
 def func(a):                                 
@@ -24,3 +25,4 @@ if __name__=="__main__":
     start = timer() 
     func2(a) 
     print("with GPU:", timer()-start) 
+    time.sleep(300)
