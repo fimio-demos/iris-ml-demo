@@ -16,4 +16,4 @@ RUN pip3 install --no-cache-dir -r requirements.txt
 ENTRYPOINT []
 
 ENV PYTHONUNBUFFERED=1
-CMD ["python3", "-u", "cuda_test.py"]
+CMD ["python3", "-u", "spiking_gpu_mem.py"]
