@@ -12,5 +12,6 @@ RUN apt-get update && apt-get install -y \
     
 COPY . .
 RUN pip3 install --no-cache-dir -r requirements.txt
+ENV PYTHONUNBUFFERED=1
+CMD ["python3", "-u", "cuda_test.py"]
 
-CMD ["python3", "cuda_test.py"]
